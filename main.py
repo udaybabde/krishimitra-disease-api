@@ -7,7 +7,7 @@ import io
 
 app = FastAPI()
 
-model = tf.keras.models.load_model("disease_model.h5")
+model = tf.keras.models.load_model("disease_model.keras")
 with open("class_names.json") as f:
     class_names = json.load(f)
 
