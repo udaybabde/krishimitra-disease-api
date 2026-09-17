@@ -6,6 +6,14 @@ from PIL import Image
 import io
 
 app = FastAPI()
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 model = tf.keras.models.load_model("disease_model.keras")
 with open("class_names.json") as f:
