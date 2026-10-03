@@ -127,9 +127,9 @@ async def detect_disease(file: UploadFile = File(...)):
 
     remedy = fertilizer_data.get(predicted_class, {})
 
-    return {
-        "disease": predicted_class,
-        "confidence": round(confidence, 2),
-        "treatment": remedy.get("treatment", "Data not available"),
-        "dosage": remedy.get("dosage", "Data not available")
-    }
+return {
+    "disease": predicted_class,
+    "confidence": round(confidence, 2),
+    "treatment": remedy.get("treatment", "Data not available") if confidence >= 60 else "Low confidence - please upload a clearer photo",
+    "dosage": remedy.get("dosage", "Data not available") if confidence >= 60 else "N/A"
+}
